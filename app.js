@@ -102,7 +102,7 @@
   // 2. Information flows to directive constructor which is a function that returns an object
   // 3. templateUrl attribute in the directive constructor gives a file location to where directive.html is invoked.
 
-//Compile vs. Link: Various hooks on directives
+//Compile vs. Link: Various hooks on directives before and after templating engine?
   //Compile is a directive property set as a JS module that takes 2 params: elem and attrs. In the return object you have pre and post properties that are functions that take 3 attributes: scope, elements, and attrs 
   //When you Compile you gain the children of the parent html element defined in the directive.
     //I can change my directive on the fly before it gets used with compile
