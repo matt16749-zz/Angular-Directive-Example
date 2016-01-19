@@ -75,3 +75,7 @@
   // 1. Directive with attributes from parent template is invoked
   // 2. Information flows to directive constructor which is a function that returns an object
   // 3. templateUrl attribute in the directive constructor gives a file location to where directive.html is invoked.
+
+//Angular Flow:
+  // Module w/ dependency injection => Route => Controller, Optional: Services => Template => Directive Invoked => Directive constructor => Directive template
+
