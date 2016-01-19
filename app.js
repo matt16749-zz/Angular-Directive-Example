@@ -30,13 +30,20 @@
   
   mainController.$inject = ['$scope', '$log'];
   function mainController($scope, $log){
-    $scope.person ={
+    $scope.people = [{
       name: 'John Doe', 
       address: '555 Main St.', 
       city: 'New York',
       state: 'NY',
       zip: '11113'
-    }
+    },
+    {
+      name: 'Jane Simmons', 
+      address: '553 Main St.', 
+      city: 'Brooklyn',
+      state: 'NY',
+      zip: '33345'
+    }]
     
     $scope.formattedAddress = function(person){
       return person.address + ', ' + person.city + ', ' + person.state + ', ' + person.zip;
@@ -53,7 +60,7 @@
     return {
       restrict: 'AECM', //Determine how to call this directive in the html either only as an 'A'ttribute,'E'lement,'C'lass, or Co'M'ment
       templateUrl: 'directives/searchresult.html',
-      replate: true, //Will replace html directve with the template.
+      replace: true, //Will replace html directve with the template.
       scope: { //changes the $scope property of the directive.
         personName: "@", //@ sign means attribute being fed where searchresult directive is called is just text. 1 way binding.
         personObject: "=", // = sign is two way binding. Whatever happens to the object inside the directive will affect the object in controller.
@@ -63,3 +70,8 @@
   }
   
 })();
+
+//Directive Flow: 
+  // 1. Directive with attributes from parent template is invoked
+  // 2. Information flows to directive constructor which is a function that returns an object
+  // 3. templateUrl attribute in the directive constructor gives a file location to where directive.html is invoked.

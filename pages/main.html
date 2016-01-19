@@ -3,5 +3,5 @@
 
 <h3>Search Results</h3>
 <div class="list-group">
-  <search-result person-name="{{ person.name }}" person-object="person" formatted-address-function="formattedAddress(parameter)"></search-result>
+  <search-result person-name="{{ person.name }}" person-object="person" formatted-address-function="formattedAddress(parameter)" ng-repeat="person in people"></search-result>
 </div>
