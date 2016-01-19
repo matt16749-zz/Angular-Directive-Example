@@ -65,17 +65,54 @@
         personName: "@", //@ sign means attribute being fed where searchresult directive is called is just text. 1 way binding.
         personObject: "=", // = sign is two way binding. Whatever happens to the object inside the directive will affect the object in controller.
         formattedAddressFunction: '&' // & sign means function.
-      } 
+      },
+      compile: function(elem, attrs){
+        console.log('Compiling');
+        console.log(elem.html());
+//        elem.removeAttr('class');
+        console.log(elem);
+        
+        return {
+//          pre: function(scope, elements, attrs){
+//            console.log('Pre-linking');
+//            console.log(elements);
+//          },
+          
+          post: function(scope, elements, attrs){
+            console.log('Post-linking');
+            if (scope.personObject.name == 'Jane Simmons'){
+              elements.removeAttr('class');
+            }
+            console.log(elements);
+          }
+        }
+        
+      }  
     }
   }
   
 })();
+
+//Angular Flow:
+  // Module w/ dependency injection => Route => Controller, Optional: Services => Template => Directive Invoked => Directive constructor => Directive template
 
 //Directive Flow: 
   // 1. Directive with attributes from parent template is invoked
   // 2. Information flows to directive constructor which is a function that returns an object
   // 3. templateUrl attribute in the directive constructor gives a file location to where directive.html is invoked.
 
-//Angular Flow:
-  // Module w/ dependency injection => Route => Controller, Optional: Services => Template => Directive Invoked => Directive constructor => Directive template
+//Compile vs. Link: Various hooks on directives
+  //Compile is a directive property set as a JS module that takes 2 params: elem and attrs. In the return object you have pre and post properties that are functions that take 3 attributes: scope, elements, and attrs 
+  //When you Compile you gain the children of the parent html element defined in the directive.
+    //I can change my directive on the fly before it gets used with compile
+  //Link is run everytime the directive is used.
+    //B.C. you can nest directive calls in html, Angular will run Compile on the parent directive, then runs pre-link, then runs Compile on children directives and calls pre-link on the children directives then runs post-link up the chain
+    //Pre-link is dangerous, Angular does not recommend using it.
+
+  //instead of compile: you can write link: if you dont have hooks for the compile life cycle. link: works like a post-link.
+
+  
+
+  
+  
 
