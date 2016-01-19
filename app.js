@@ -66,6 +66,7 @@
         personObject: "=", // = sign is two way binding. Whatever happens to the object inside the directive will affect the object in controller.
         formattedAddressFunction: '&' // & sign means function.
       },
+      transclude: true,
       compile: function(elem, attrs){
         console.log('Compiling');
         console.log(elem.html());
@@ -111,8 +112,10 @@
 
   //instead of compile: you can write link: if you dont have hooks for the compile life cycle. link: works like a post-link.
 
-  
-
+//Transclusion:
+  //Including one document inside another.
+  //use ng-transclude inside your directive to include words defined where the directive was called in the parent template
+  //add transclude: true property inside directive constructor
   
   
 
