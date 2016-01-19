@@ -1,4 +1,18 @@
 <a href="#" class="list-group-item">
-  <h4 class="list-group-item-heading">{{personName}}</h4>
-  <p class="list-group-item-text">{{person.address}}</p>
+  <ul>
+    <li>Person Properties:</li>
+    <li>personName</li>
+  </ul>  
+
+  <ul>
+    <li>Person Object:</li>
+    <li>{{personObject.name}}</li>
+    <li>{{personObject.address}}</li>
+  </ul>  
+  
+  <ul>
+    <li>Person Function: {{ formattedAddressFunction({parameter: personObject }) }}</li>
+    <!--  personObject in the object map came as an attribute from the main.html template where search-function directive was called.  -->
+  </ul>
+  
 </a>

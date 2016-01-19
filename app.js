@@ -32,7 +32,14 @@
   function mainController($scope, $log){
     $scope.person ={
       name: 'John Doe', 
-      address: '555 Main St., New York, NY 11113'
+      address: '555 Main St.', 
+      city: 'New York',
+      state: 'NY',
+      zip: '11113'
+    }
+    
+    $scope.formattedAddress = function(person){
+      return person.address + ', ' + person.city + ', ' + person.state + ', ' + person.zip;
     }
   }
   
@@ -48,8 +55,9 @@
       templateUrl: 'directives/searchresult.html',
       replate: true, //Will replace html directve with the template.
       scope: { //changes the $scope property of the directive.
-        personName: "@", //@ sign means attribute being fed where searchresult directive is called is just text.
-        personAddress: "@"
+        personName: "@", //@ sign means attribute being fed where searchresult directive is called is just text. 1 way binding.
+        personObject: "=", // = sign is two way binding. Whatever happens to the object inside the directive will affect the object in controller.
+        formattedAddressFunction: '&' // & sign means function.
       } 
     }
   }
