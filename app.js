@@ -30,7 +30,10 @@
   
   mainController.$inject = ['$scope', '$log'];
   function mainController($scope, $log){
-    
+    $scope.person ={
+      name: 'John Doe', 
+      address: '555 Main St., New York, NY 11113'
+    }
   }
   
   secondController.$inject = ['$scope', '$log', '$routeParams'];
@@ -39,10 +42,15 @@
   }
   
   function searchResult(){
+    //Directive returns an object.
     return {
       restrict: 'AECM', //Determine how to call this directive in the html either only as an 'A'ttribute,'E'lement,'C'lass, or Co'M'ment
       templateUrl: 'directives/searchresult.html',
-      replate: true //Will replace html directve with the template.
+      replate: true, //Will replace html directve with the template.
+      scope: { //changes the $scope property of the directive.
+        personName: "@", //@ sign means attribute being fed where searchresult directive is called is just text.
+        personAddress: "@"
+      } 
     }
   }
   
